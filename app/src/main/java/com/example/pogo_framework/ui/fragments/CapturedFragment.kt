@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pogo_framework.R
+import com.example.pogo_framework.helpers.Status
 import com.example.pogo_framework.models.CapturedModel
 import com.example.pogo_framework.ui.activities.DetailType
 import com.example.pogo_framework.ui.activities.PokemonDetailView
@@ -18,6 +19,8 @@ import com.example.pogo_framework.ui.adapters.CapturedRecyclerViewAdapter
 import com.example.pogo_framework.view_models.CapturedViewModel
 import com.example.pogo_framework.view_models.CommonViewModel
 import kotlinx.android.synthetic.main.fragment_captured.*
+import kotlinx.android.synthetic.main.fragment_captured.progress_layout
+import kotlinx.android.synthetic.main.fragment_community.*
 
 
 class CapturedFragment : Fragment() {
@@ -42,6 +45,12 @@ class CapturedFragment : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance((requireContext() as AppCompatActivity).application)
                 .create(CommonViewModel::class.java)
         capturedViewModel.getCapturedPokemonList().observe(viewLifecycleOwner, {
+            if (it.status == Status.LOADING){
+                showLoader()
+            }else{
+                hideLoader()
+            }
+
             if (it.data == null && it.message.isNullOrEmpty().not()) {
                 Toast.makeText(
                     requireContext(),
@@ -52,6 +61,14 @@ class CapturedFragment : Fragment() {
                 it.data?.let { it -> initUi(it) }
             }
         })
+    }
+
+    private fun showLoader() {
+        progress_layout.visibility = View.VISIBLE
+    }
+
+    private fun hideLoader() {
+        progress_layout.visibility = View.GONE
     }
 
     private fun initUi(capturedResponseModel: ArrayList<CapturedModel>) {

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pogo_framework.R
+import com.example.pogo_framework.helpers.Status
 import com.example.pogo_framework.models.ActivityModelResponse
 import com.example.pogo_framework.models.Friends
 import com.example.pogo_framework.ui.activities.DetailType
@@ -42,6 +43,12 @@ class CommunityFragment : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance((requireContext() as AppCompatActivity).application)
                 .create(CommonViewModel::class.java)
         communityViewModel.getProfileActivity().observe(viewLifecycleOwner, {
+            if (it.status == Status.LOADING){
+                showLoader()
+            }else{
+                hideLoader()
+            }
+
             if (it.data == null && it.message.isNullOrEmpty().not()) {
                 Toast.makeText(
                     requireContext(),
@@ -52,6 +59,14 @@ class CommunityFragment : Fragment() {
                 it.data?.let { it -> initUi(it) }
             }
         })
+    }
+
+    private fun showLoader() {
+        progress_layout.visibility = View.VISIBLE
+    }
+
+    private fun hideLoader() {
+        progress_layout.visibility = View.GONE
     }
 
     private fun initUi(activityModelResponse: ActivityModelResponse) {

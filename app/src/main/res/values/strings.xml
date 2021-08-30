@@ -7,4 +7,8 @@
     <string name="str_type">Type : </string>
     <string name="str_captured_at">Captured at : </string>
     <string name="str_pokemon_image_transition">pokemon_image_transition</string>
+    <string name="str_captured_on">\"Captured on : \"</string>
+    <string name="str_capture_on">Capture on :</string>
+    <string name="str_capture_in">Captured in</string>
+    <string name="str_found_in">Found in</string>
 </resources>

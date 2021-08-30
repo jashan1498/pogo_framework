@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pogo_framework.R
+import com.example.pogo_framework.helpers.Status
 import com.example.pogo_framework.models.CapturedModel
 import com.example.pogo_framework.ui.activities.DetailType
 import com.example.pogo_framework.ui.activities.PokemonDetailView
@@ -47,6 +48,12 @@ class TeamFragment : Fragment() {
 
     private fun attachObservers() {
         teamViewModel.teamInfoLiveData.observe(viewLifecycleOwner, Observer {
+            if (it.status == Status.LOADING) {
+                showLoader()
+            } else {
+                hideLoader()
+            }
+
             if (it == null && it?.message.isNullOrEmpty().not()) {
                 Toast.makeText(
                     requireContext(),
@@ -61,16 +68,29 @@ class TeamFragment : Fragment() {
         })
     }
 
+    private fun showLoader() {
+        progress_layout.visibility = View.VISIBLE
+    }
+
+    private fun hideLoader() {
+        progress_layout.visibility = View.GONE
+    }
+
+
     private fun initUi(capturedModelList: ArrayList<CapturedModel>) {
-        rv_team.adapter = TeamRecyclerViewAdapter(capturedModelList, commonViewModel, this, { captureModel,transitionView->
-            PokemonDetailView.startActivity(
-                requireActivity(),
-                DetailType.CAPTURED,
-                -1,
-                capturedModel = captureModel,
-                transitionView = transitionView
-            )
-        })
+        rv_team.adapter = TeamRecyclerViewAdapter(
+            capturedModelList,
+            commonViewModel,
+            this,
+            { captureModel, transitionView ->
+                PokemonDetailView.startActivity(
+                    requireActivity(),
+                    DetailType.CAPTURED,
+                    -1,
+                    capturedModel = captureModel,
+                    transitionView = transitionView
+                )
+            })
         rv_team.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
     }
 }

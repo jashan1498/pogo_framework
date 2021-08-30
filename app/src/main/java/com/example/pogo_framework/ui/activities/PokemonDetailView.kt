@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.pogo_framework.R
@@ -41,7 +40,7 @@ class PokemonDetailView : AppCompatActivity() {
     private var data: PokemonData? = null
     private var capturedByOtherModel: Friends? = null
     private var capturedModel: CapturedModel? = null
-    lateinit var commonViewModel: CommonViewModel
+    private lateinit var commonViewModel: CommonViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,18 +63,18 @@ class PokemonDetailView : AppCompatActivity() {
 
     private fun attachObservers() {
         if (pokemonId >= 0) {
-            commonViewModel.getPokemon(pokemonId).observe(this, Observer {
+            commonViewModel.getPokemon(pokemonId).observe(this, {
                 setResult(it)
             })
         } else if (capturedByOtherModel != null) {
             capturedByOtherModel?.pokemon?.name?.let {
-                commonViewModel.getPokemon(it).observe(this, Observer {
+                commonViewModel.getPokemon(it).observe(this, {
                     setResult(it)
                 })
             }
         } else {
             capturedModel?.name?.let {
-                commonViewModel.getPokemon(it).observe(this, Observer {
+                commonViewModel.getPokemon(it).observe(this, {
                     setResult(it)
                 })
             }
@@ -124,7 +123,7 @@ class PokemonDetailView : AppCompatActivity() {
         pokemon_type.text = pokemonType
         if (detailType != DetailType.CAPTURE) {
             setCapturedInView()
-            capture_on_title.text = "Captured on : "
+            capture_on_title.text = resources.getString(R.string.str_captured_on)
             capturedByOtherModel?.pokemon?.capturedAt?.let {
                 tv_captured_on.text = CommonHelpers.getRelativeTime(it)
             }
@@ -139,7 +138,7 @@ class PokemonDetailView : AppCompatActivity() {
                 }
             }
         } else {
-            capture_on_title.text = "Capture on :"
+            capture_on_title.text = resources.getString(R.string.str_capture_on)
             val sdf: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy");
             sdf.format(Date(System.currentTimeMillis()))
             tv_captured_on.text = sdf.format(Date(System.currentTimeMillis()))
@@ -160,9 +159,9 @@ class PokemonDetailView : AppCompatActivity() {
         ll_captured_in.visibility = View.VISIBLE
 
         if (detailType == DetailType.CAPTURED) {
-            tv_captured_in.text = "Captured in"
+            tv_captured_in.text = resources.getString(R.string.str_capture_in)
         } else {
-            tv_captured_in.text = "Found in"
+            tv_captured_in.text = resources.getString(R.string.str_found_in)
         }
 
         captured_map?.getMapAsync {

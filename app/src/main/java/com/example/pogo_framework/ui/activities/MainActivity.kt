@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             it?.results?.let {
                 if (it.isNullOrEmpty().not()) {
                     initUI()
-                    Toast.makeText(this, it.count().toString(), Toast.LENGTH_LONG).show()
                 } else {
                     // todo jashan show error view
                 }

@@ -84,7 +84,6 @@ class ExploreFragment : Fragment() {
         myLocation.latitude = point.latitude
         myLocation.longitude = point.longitude
 
-        //This is to generate 10 random points
         for (i in 0..9) {
             val x0 = point.latitude
             val y0 = point.longitude
