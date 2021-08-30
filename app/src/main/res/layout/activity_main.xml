@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/explore_tab"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_bordered_bg"
+            android:gravity="center"
+            android:onClick="handleTabClick"
+            android:tag="0"
+            android:text="Explore"
+            android:textColor="@color/white"
+            tools:ignore="UsingOnClickInXml" />
+
+        <TextView
+            android:id="@+id/community_tab"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_bordered_bg"
+            android:gravity="center"
+            android:onClick="handleTabClick"
+            android:tag="1"
+            android:text="Community"
+            android:textColor="@color/white"
+            tools:ignore="UsingOnClickInXml" />
+
+        <TextView
+            android:id="@+id/team_tab"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_bordered_bg"
+            android:gravity="center"
+            android:onClick="handleTabClick"
+            android:tag="2"
+            android:text="My Team"
+            android:textColor="@color/white"
+            tools:ignore="UsingOnClickInXml" />
+
+        <TextView
+            android:id="@+id/captured_tab"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_bordered_bg"
+            android:gravity="center"
+            android:onClick="handleTabClick"
+            android:tag="3"
+            android:text="Captured"
+            android:textColor="@color/white"
+            tools:ignore="UsingOnClickInXml" />
+
+    </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

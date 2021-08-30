@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/custom_bordered_bg.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/drawable/custom_bordered_black.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/drawable/custom_bordered_red.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/drawable/gradient_map.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/drawable/gradient_sky.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_pokemon_detail_view.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/captured_view.xml" value="0.19814814814814816" />
+        <entry key="app/src/main/res/layout/community_activity_view.xml" value="0.19814814814814816" />
+        <entry key="app/src/main/res/layout/custom_trainer_activity_view.xml" value="0.19814814814814816" />
+        <entry key="app/src/main/res/layout/fragment_captured.xml" value="0.19814814814814816" />
+        <entry key="app/src/main/res/layout/fragment_community.xml" value="0.24153846153846154" />
+        <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/fragment_explore2.xml" value="0.10044522229152883" />
+        <entry key="app/src/main/res/layout/fragment_team.xml" value="0.24153846153846154" />
+        <entry key="app/src/main/res/layout/team_item_view.xml" value="0.14184924244136943" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="pogo_framework.app" />
+      </set>
+    </option>
+  </component>
+</project>
